@@ -1,0 +1,6 @@
+ignored:
+  - DL3008   # always pin apt versions — not pragmatic for periodic image rebuilds
+  - DL3013   # always pin pip versions — we pin in requirements.txt instead
+  - DL3018   # always pin apk versions
+  - SC1091   # shellcheck: can't follow sourced files (e.g. /etc/os-release in RUN)
+  - SC2086   # shellcheck: word splitting — often intentional inside RUN
