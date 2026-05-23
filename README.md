@@ -14,6 +14,30 @@
 
 Production-ready starter projects for a **Raspberry Pi 5 (8 GB)** covering self-hosted websites, local + cloud LLMs, secure public exposure, an AI-CLI toolkit you reach from your phone, and a small web control panel that ties it all together. Each project is clone-and-run with Docker Compose where it fits, and every README lists the exact dependencies, sign-up steps, and resource cost.
 
+## Quick install (interactive TUI)
+
+On a fresh Pi 5 with Raspberry Pi OS 64-bit:
+
+```bash
+git clone https://github.com/femrebora/raspberry-pi-projects.git
+cd raspberry-pi-projects
+bash install.sh
+```
+
+A whiptail TUI walks you through:
+
+1. Base bootstrap (Docker + swap + kernel tweaks)
+2. Security baseline (`ufw` + `fail2ban` + auto-updates)
+3. Project checklist — pick which of the 14 to deploy
+4. Per-project key prompts (Cloudflare token, free-LLM API keys, etc.)
+5. Brings up every selected Compose stack, prints final URLs
+
+The default selection enables the **control panel (14)**, **Ollama (05)**, **free-LLM router (07)**, and **AI CLI toolkit (13)** — i.e. once it finishes you can browse to `http://<pi-ip>:8000`, log in, and manage everything from a web UI.
+
+Re-run `install.sh` any time to add more projects, rotate keys, or repair a stack — it's idempotent.
+
+For step-by-step manual setup instead, see [`docs/os-install.md`](docs/os-install.md).
+
 ## What's inside
 
 | # | Project | What it does | Stack |
