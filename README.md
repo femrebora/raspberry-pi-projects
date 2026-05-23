@@ -12,7 +12,7 @@
 [![tunnel](https://img.shields.io/badge/tunnel-Cloudflare%20%7C%20Tailscale-F38020?logo=cloudflare&logoColor=white)](projects/03-cloudflare-tunnel)
 [![status](https://img.shields.io/badge/status-active-A3E635)](#)
 
-Production-ready starter projects for a **Raspberry Pi 5 (8 GB)** covering self-hosted websites, local + cloud LLMs, secure public exposure, an AI-CLI toolkit you reach from your phone, and a small web control panel that ties it all together. Each project is clone-and-run with Docker Compose where it fits, and every README lists the exact dependencies, sign-up steps, and resource cost.
+Production-ready starter projects for a **Raspberry Pi 5 (8 GB)** covering self-hosted websites, local + cloud LLMs, secure public exposure, an AI-CLI toolkit you reach from any device (laptop, desktop, or phone), and a small web control panel that ties it all together. Each project is clone-and-run with Docker Compose where it fits, and every README lists the exact dependencies, sign-up steps, and resource cost.
 
 ## Quick install (interactive TUI)
 
@@ -54,7 +54,7 @@ For step-by-step manual setup instead, see [`docs/os-install.md`](docs/os-instal
 | [10](projects/10-monitoring-uptime) | Monitoring | Uptime + service health dashboard | Uptime Kuma |
 | [11](projects/11-security-baseline) | Security baseline | `ufw` + `fail2ban` + unattended-upgrades + Watchtower | Shell + Docker |
 | [12](projects/12-backups) | Backups | Encrypted off-site backups | `restic` + systemd timer |
-| [13](projects/13-ai-cli-toolkit) | AI CLI toolkit | Claude Code, Gemini CLI, Codex CLI, Aider, `llm`, `sgpt` — SSH in from your phone and use them all | Shell + Node + pipx |
+| [13](projects/13-ai-cli-toolkit) | AI CLI toolkit | Claude Code, Gemini CLI, Codex CLI, Aider, `llm`, `sgpt` — SSH in from any laptop / desktop / phone and use them all | Shell + Node + pipx |
 | [14](projects/14-control-panel) | Mini web dashboard | One page to start/stop every stack, edit `.env`, manage Ollama, check the router | FastAPI + HTMX |
 
 ## Docs
@@ -62,7 +62,7 @@ For step-by-step manual setup instead, see [`docs/os-install.md`](docs/os-instal
 - [`docs/hardware-setup.md`](docs/hardware-setup.md) — cooler, SSD, PSU, the works
 - [`docs/os-install.md`](docs/os-install.md) — flash, SSH hardening, move-to-SSD
 - [`docs/free-domain-dns.md`](docs/free-domain-dns.md) — DuckDNS / Cloudflare quick tunnels / Tailscale MagicDNS
-- [`docs/remote-access-from-phone.md`](docs/remote-access-from-phone.md) — Tailscale + SSH client + control panel from iOS / Android
+- [`docs/remote-access.md`](docs/remote-access.md) — Tailscale + SSH from laptop / desktop / iOS / Android, plus the control panel in a browser anywhere
 - [`docs/glossary.md`](docs/glossary.md) — terms in this repo, kept short
 - [`projects/05-ollama-local-llm/benchmarks.md`](projects/05-ollama-local-llm/benchmarks.md) — measured tok/s for every recommended Ollama model
 - [`projects/05-ollama-local-llm/alt-models.md`](projects/05-ollama-local-llm/alt-models.md) — best small models by task (coding, reasoning, vision, multilingual, embeddings)

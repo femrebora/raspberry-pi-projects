@@ -1,6 +1,6 @@
 # 13 — AI CLI toolkit (Claude, Gemini, Codex, Aider, llm, sgpt)
 
-Turn your Pi into a personal AI hub you can reach from anywhere. SSH in from your phone, run any of these CLIs, get answers from any frontier model. All keys live on the Pi; your phone is just a terminal.
+Turn your Pi into a personal AI hub you can reach from anywhere. SSH in from your **laptop, desktop, or phone**, run any of these CLIs, get answers from any frontier model. All keys live on the Pi; the remote device is just a terminal.
 
 ## What gets installed
 
@@ -13,7 +13,7 @@ Turn your Pi into a personal AI hub you can reach from anywhere. SSH in from you
 | **`llm`** (Simon Willison) | **anything** via plugins | Quick one-shot queries from the shell, scriptable | env vars |
 | **`sgpt`** (shell-gpt) | OpenAI-compatible (incl. our router) | Tiny ChatGPT-style shell prompt | `OPENAI_API_KEY` (or point at router) |
 
-> All of these are command-line tools. From your phone, install an SSH client (see [`docs/remote-access-from-phone.md`](../../docs/remote-access-from-phone.md)), SSH in, and use them as if you were at a terminal.
+> All of these are command-line tools. From a laptop / desktop, `ssh` in (or use VS Code's Remote-SSH). From a phone, install an SSH client and connect over Tailscale. Full guide: [`docs/remote-access.md`](../../docs/remote-access.md).
 
 ## Setup
 

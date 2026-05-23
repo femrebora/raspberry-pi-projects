@@ -1,6 +1,6 @@
 # 14 — Control panel (mini web dashboard)
 
-A small, **single-page** web dashboard that ties every project in this repo together. Status, start/stop, log peek, Ollama model management, and per-project `.env` editor — all from your phone over Tailscale or your LAN.
+A small, **single-page** web dashboard that ties every project in this repo together. Status, start/stop, log peek, Ollama model management, and per-project `.env` editor — works in any browser (laptop, desktop, or phone) over Tailscale or your LAN.
 
 Built with FastAPI + HTMX. No JS build step, no React, no Node. ~250 lines total.
 
