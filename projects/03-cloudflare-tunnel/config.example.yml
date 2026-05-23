@@ -1,0 +1,15 @@
+# OPTIONAL: only needed if you run cloudflared without a token (legacy / advanced).
+# The recommended flow uses the token method (see README) and configures
+# routes in the Cloudflare dashboard, not this file. Keeping this here as a
+# reference for the alternative `cloudflared tunnel run --config /etc/cloudflared/config.yml`
+# style of setup.
+
+tunnel: <YOUR-TUNNEL-UUID>
+credentials-file: /etc/cloudflared/<YOUR-TUNNEL-UUID>.json
+
+ingress:
+  - hostname: pi5.yourdomain.com
+    service: http://localhost:80
+  - hostname: ssh.yourdomain.com
+    service: ssh://localhost:22
+  - service: http_status:404      # catch-all (required as last rule)

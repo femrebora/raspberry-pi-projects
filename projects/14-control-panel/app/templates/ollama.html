@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Ollama models</h2>
+  <p class="meta">Connected to {{ ollama_url }}</p>
+  {% if error %}
+    <p style="color: var(--red)">Couldn't reach Ollama: {{ error }}</p>
+  {% endif %}
+  {% if models %}
+    <div class="card">
+      {% for m in models %}
+        <div class="row" style="border-bottom:1px solid var(--border);padding:0.4rem 0">
+          <span style="flex:1">{{ m.name }}</span>
+          <span class="meta">{{ (m.size / 1e9) | round(2) }} GB</span>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No models installed yet.</p>
+  {% endif %}
+
+  <div class="card">
+    <h2>Pull a new model</h2>
+    <form method="post" action="/ollama/pull" class="row">
+      <input type="text" name="model" placeholder="e.g. gemma3:1b" required style="flex:1">
+      <button>Pull</button>
+    </form>
+    <p class="meta">Recommended Pi 5 picks: <code>gemma3:1b</code>, <code>gemma3:4b</code>,
+       <code>qwen2.5:1.5b</code>, <code>qwen2.5-coder:1.5b</code>, <code>phi3:mini</code>,
+       <code>tinyllama</code>. See <code>projects/05-ollama-local-llm/alt-models.md</code>.</p>
+  </div>
+{% endblock %}

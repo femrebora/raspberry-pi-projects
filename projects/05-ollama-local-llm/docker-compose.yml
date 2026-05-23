@@ -1,0 +1,32 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"   # OpenAI-compatible API; bind to 127.0.0.1:11434 if you don't want LAN access
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    ports:
+      - "3000:8080"     # browse to http://<pi-ip>:3000
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      WEBUI_AUTH: "true"
+    volumes:
+      - open_webui_data:/app/backend/data
+
+volumes:
+  ollama_data:
+  open_webui_data:

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block body %}
+  <a class="btn" href="/">← back</a>
+  <h2>{{ name }} — last 200 log lines</h2>
+  <pre>{{ logs }}</pre>
+{% endblock %}

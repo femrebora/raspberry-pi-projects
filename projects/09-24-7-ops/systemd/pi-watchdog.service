@@ -1,0 +1,7 @@
+[Unit]
+Description=Pi watchdog — reboots if docker becomes unresponsive
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/pi-watchdog.sh

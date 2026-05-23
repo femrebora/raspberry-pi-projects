@@ -1,0 +1,10 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-quick
+    restart: "no"
+    # Quick tunnel: random *.trycloudflare.com URL printed in logs.
+    # Replace --url with whatever you want exposed.
+    command: tunnel --no-autoupdate --url http://host.docker.internal:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

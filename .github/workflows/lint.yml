@@ -1,0 +1,55 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run shellcheck
+        uses: ludeeus/action-shellcheck@2.0.0
+        with:
+          severity: warning
+          ignore_paths: >-
+            node_modules
+            .venv
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+          config: ".markdownlint.json"
+
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint Dockerfiles
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          recursive: true
+          ignore: DL3008,DL3018,DL3013
+
+  python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/07-free-llm-api-router
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff pytest httpx
+      - run: ruff check src tests
+      - run: pip install -e .
+      - run: pytest -q

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+  {% for p in projects %}
+    <div class="card">
+      <div class="row">
+        <h2 style="flex:1">{{ p.name }}</h2>
+        <span class="pill {{ p.status }}">{{ p.status }}</span>
+      </div>
+      <div class="row meta">{{ p.compose }}</div>
+      <div class="row" style="margin-top:0.5rem">
+        <form method="post" action="/project/{{ p.name }}/up"><button>Start</button></form>
+        <form method="post" action="/project/{{ p.name }}/down"><button>Stop</button></form>
+        <a class="btn" href="/project/{{ p.name }}/logs">Logs</a>
+        {% if p.has_env %}<a class="btn" href="/project/{{ p.name }}/env">Env</a>{% endif %}
+      </div>
+    </div>
+  {% else %}
+    <p>No compose projects discovered under <code>{{ ollama_url }}</code>.
+       Did you mount the repo at <code>/repo</code> ?</p>
+  {% endfor %}
+{% endblock %}

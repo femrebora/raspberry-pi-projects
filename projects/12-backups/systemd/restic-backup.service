@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily restic backup
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/restic-backup
+ExecStart=/usr/local/sbin/restic-backup.sh
+Nice=10
+IOSchedulingClass=idle

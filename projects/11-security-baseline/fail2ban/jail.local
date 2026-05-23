@@ -1,0 +1,12 @@
+# Tuned for a personal Pi behind a firewall. Adjust if your needs differ.
+[DEFAULT]
+bantime  = 1h
+findtime = 10m
+maxretry = 5
+backend  = systemd
+# Avoid banning yourself or your LAN
+ignoreip = 127.0.0.1/8 ::1 192.168.0.0/16 10.0.0.0/8 100.64.0.0/10
+
+[sshd]
+enabled = true
+mode    = aggressive

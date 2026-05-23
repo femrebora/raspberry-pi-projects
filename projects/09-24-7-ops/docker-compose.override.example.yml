@@ -1,0 +1,18 @@
+# Drop this beside any docker-compose.yml as `docker-compose.override.yml` to:
+#   - cap log size (so a runaway container can't fill your SSD)
+#   - add modest resource limits (so one container can't starve the Pi)
+# Compose merges override automatically when you `docker compose up`.
+
+services:
+  # Replace `myservice` with each service name from the main compose file.
+  myservice:
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+          cpus: "2.0"

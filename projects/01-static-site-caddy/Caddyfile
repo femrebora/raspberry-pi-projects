@@ -1,0 +1,22 @@
+{
+    # email used by Let's Encrypt for renewal notices; replace if you fork.
+    email admin@example.com
+}
+
+{$SITE_DOMAIN} {
+    root * /srv
+    file_server
+    encode zstd gzip
+
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        X-Frame-Options "SAMEORIGIN"
+        -Server
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}

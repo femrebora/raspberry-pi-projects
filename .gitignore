@@ -1,0 +1,65 @@
+# Secrets — never commit
+.env
+.env.local
+*.env
+!.env.example
+*.key
+*.pem
+credentials.json
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node (in case any sub-project uses it)
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Docker / runtime data
+data/
+volumes/
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+*.log
+logs/
+
+# Build artefacts
+dist/
+build/
+*.o
+*.so
+
+# llama.cpp / GGUF model files (huge)
+models/
+*.gguf
+*.bin
+*.safetensors
+
+# Backups
+*.bak
+*.tar
+*.tar.gz
+*.zip

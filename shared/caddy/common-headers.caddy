@@ -1,0 +1,15 @@
+# Reusable Caddy snippet for sensible security headers.
+# Include in a site block with:  import common_headers
+(common_headers) {
+    header {
+        # HSTS — only enable once you're sure HTTPS works end-to-end.
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        # Disable MIME-sniffing.
+        X-Content-Type-Options "nosniff"
+        # Modest XSS / clickjacking defence.
+        Referrer-Policy "strict-origin-when-cross-origin"
+        X-Frame-Options "SAMEORIGIN"
+        # Don't leak the server version.
+        -Server
+    }
+}

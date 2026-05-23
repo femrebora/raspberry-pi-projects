@@ -1,0 +1,28 @@
+services:
+  panel:
+    build: ./app
+    container_name: pi-control-panel
+    restart: unless-stopped
+    ports:
+      - "8000:8000"   # for LAN-only behind Caddy/Tailscale, change to "127.0.0.1:8000:8000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PANEL_USER: ${PANEL_USER:-admin}
+      PANEL_PASSWORD: ${PANEL_PASSWORD:-please-change-me}
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      ROUTER_URL: ${ROUTER_URL:-http://host.docker.internal:8088}
+      REPO_ROOT: /repo
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Mount the whole raspberry-pi-projects checkout so the panel can read
+      # docker-compose.yml and read/write .env files for every project.
+      - ../..:/repo:rw
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').status==200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

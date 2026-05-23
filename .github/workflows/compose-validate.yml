@@ -1,0 +1,35 @@
+name: compose-validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate every docker-compose.yml
+        run: |
+          set -euo pipefail
+          # Find every compose file and run `docker compose config` against it.
+          # Some files reference .env vars — provide harmless defaults so the
+          # schema check passes without real secrets.
+          export CF_TUNNEL_TOKEN=dummy
+          export TAILSCALE_AUTHKEY=dummy
+          export GROQ_API_KEY=dummy
+          export GEMINI_API_KEY=dummy
+          export OPENROUTER_API_KEY=dummy
+          export CEREBRAS_API_KEY=dummy
+          export HF_API_KEY=dummy
+          export RESTIC_PASSWORD=dummy
+          export RESTIC_REPOSITORY=/tmp/restic
+          # Skip *.example.* fragments — they're meant to be merged into
+          # other Compose files, not validated standalone.
+          find projects \( -name 'docker-compose*.yml' -o -name 'docker-compose*.yaml' \) \
+            ! -name '*.example.*' | while read -r f; do
+            echo ">>> $f"
+            docker compose -f "$f" config --quiet
+          done
