@@ -1,5 +1,17 @@
 # raspberry-pi-projects
 
+[![lint](https://github.com/femrebora/raspberry-pi-projects/actions/workflows/lint.yml/badge.svg)](https://github.com/femrebora/raspberry-pi-projects/actions/workflows/lint.yml)
+[![compose-validate](https://github.com/femrebora/raspberry-pi-projects/actions/workflows/compose-validate.yml/badge.svg)](https://github.com/femrebora/raspberry-pi-projects/actions/workflows/compose-validate.yml)
+[![license](https://img.shields.io/badge/license-MIT-A3E635)](LICENSE)
+[![platform](https://img.shields.io/badge/platform-Raspberry%20Pi%205%20%7C%20ARM64-C7053D?logo=raspberrypi&logoColor=white)](docs/hardware-setup.md)
+[![python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docs.docker.com/compose/)
+[![web](https://img.shields.io/badge/web-Caddy%20%7C%20FastAPI-009688?logo=fastapi&logoColor=white)](#whats-inside)
+[![LLM](https://img.shields.io/badge/local%20LLM-Ollama%20%7C%20llama.cpp-000000?logo=ollama&logoColor=white)](projects/05-ollama-local-llm)
+[![models](https://img.shields.io/badge/cloud%20models-Claude%20%7C%20Gemini%20%7C%20DeepSeek%20%7C%20Groq%20%7C%20OpenRouter%20%7C%20Cerebras-7C3AED)](projects/13-ai-cli-toolkit)
+[![tunnel](https://img.shields.io/badge/tunnel-Cloudflare%20%7C%20Tailscale-F38020?logo=cloudflare&logoColor=white)](projects/03-cloudflare-tunnel)
+[![status](https://img.shields.io/badge/status-active-A3E635)](#)
+
 Production-ready starter projects for a **Raspberry Pi 5 (8 GB)** covering self-hosted websites, local + cloud LLMs, secure public exposure, an AI-CLI toolkit you reach from your phone, and a small web control panel that ties it all together. Each project is clone-and-run with Docker Compose where it fits, and every README lists the exact dependencies, sign-up steps, and resource cost.
 
 ## What's inside
